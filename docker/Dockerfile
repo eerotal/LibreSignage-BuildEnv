@@ -33,9 +33,13 @@ RUN curl -sL https://deb.nodesource.com/setup_current.x | bash - && \
 		libfreetype6-dev \
 		libjpeg62-turbo-dev \
 		libpng-dev \
-		ffmpeg && \
+		ffmpeg \
+		zip \
+		libzip-dev && \
 	docker-php-ext-configure gd --with-freetype-dir=/usr/include --with-jpeg-dir=/usr/include && \
-	docker-php-ext-install -j$(nproc) gd
+	docker-php-ext-install -j$(nproc) gd && \
+	docker-php-ext-install zip && \
+	docker-php-ext-configure zip --with-libzip
 
 # Composer can't be installed from APT because it has unmet dependencies so
 # let's install it manually.

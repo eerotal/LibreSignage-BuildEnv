@@ -5,7 +5,7 @@
 # https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md
 #
 
-EXPECTED_CHECKSUM="$(wget -q -O - https://composer.github.io/installer.sig)"
+EXPECTED_CHECKSUM="$(curl -sL https://composer.github.io/installer.sig)"
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 ACTUAL_CHECKSUM="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
 
