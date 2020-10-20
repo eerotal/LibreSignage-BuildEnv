@@ -9,6 +9,7 @@ if [ "$1" = "build" ]; then
 elif [ "$1" = "run" ]; then
 	docker run \
 		-it \
+		--rm \
 		--entrypoint bash \
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		-v $REPO_PATH:/LibreSignage/ \
