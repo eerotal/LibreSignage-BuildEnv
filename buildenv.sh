@@ -10,7 +10,7 @@ elif [ "$1" = "run" ]; then
 	docker run \
 		-it \
 		--rm \
-		--entrypoint bash \
+		--entrypoint /buildenv-entrypoint.sh \
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		-v $REPO_PATH:/LibreSignage/ \
 		$IMAGE_NAME:$IMAGE_VERSION

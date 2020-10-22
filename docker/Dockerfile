@@ -46,6 +46,10 @@ RUN curl -sL https://deb.nodesource.com/setup_current.x | bash - && \
 COPY download-composer.sh download-composer.sh
 RUN sh download-composer.sh && rm download-composer.sh
 
+# Copy and setup the entrypoint script.
+COPY buildenv-entrypoint.sh /buildenv-entrypoint.sh
+RUN chmod +x /buildenv-entrypoint.sh
+
 # Setup workdir.
 RUN mkdir /LibreSignage
 WORKDIR /LibreSignage
