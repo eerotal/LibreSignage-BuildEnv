@@ -6,6 +6,6 @@
 #
 
 # Enable experimental Docker features (ie. buildx)
-export export DOCKER_CLI_EXPERIMENTAL=enabled
+export DOCKER_CLI_EXPERIMENTAL=enabled
 
 /bin/bash
