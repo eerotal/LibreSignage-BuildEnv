@@ -10,8 +10,12 @@ elif [ "$1" = "run" ]; then
 	docker run \
 		-it \
 		--rm \
-		--entrypoint /buildenv-entrypoint.sh \
+		--entrypoint /buildenv-entrypoint-1.sh \
+		-e HOST_UID=$(id -u) \
 		-v /var/run/docker.sock:/var/run/docker.sock \
-		-v $REPO_PATH:/LibreSignage/ \
+		-v /etc/passwd:/etc/passwd:ro \
+		-v /etc/group:/etc/group:ro \
+		-v /etc/shadow:/etc/shadow:ro \
+		-v /home/$(id -un):/home/$(id -un) \
 		$IMAGE_NAME:$IMAGE_VERSION
 fi

@@ -27,6 +27,7 @@ RUN curl -sL https://deb.nodesource.com/setup_current.x | bash - && \
 		make \
 		librsvg2-bin \
 		doxygen \
+		graphviz \
 		docker-ce \
 		docker-ce-cli \
 		containerd.io \
@@ -47,11 +48,8 @@ COPY download-composer.sh download-composer.sh
 RUN sh download-composer.sh && rm download-composer.sh
 
 # Copy and setup the entrypoint script.
-COPY buildenv-entrypoint.sh /buildenv-entrypoint.sh
-RUN chmod +x /buildenv-entrypoint.sh
-
-# Setup workdir.
-RUN mkdir /LibreSignage
-WORKDIR /LibreSignage
+COPY buildenv-entrypoint-1.sh /buildenv-entrypoint-1.sh
+COPY buildenv-entrypoint-2.sh /buildenv-entrypoint-2.sh
+RUN chmod +x /buildenv-entrypoint-*
 
 
