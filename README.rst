@@ -11,8 +11,17 @@ the entire container.
 Dependencies
 ++++++++++++
 
-The only depencency is Docker. Install it by following the instructions from the
-Docker website: https://docs.docker.com/get-docker/.
+The only depencencies are *Docker* and some multiarch emulation related
+dependencies such as *qemu*. You can install all of the required dependencies
+on Debian by running ``sudo ./install.sh``. If you're running some other system,
+check the script for an up-to-date list of dependencies.
+
+.. note::
+  The multiarch emulation dependecies are required on the host machine because
+  the Docker daemon running on the host is also used from inside the container.
+  A separate Docker daemon is not started inside the container. This also means
+  that the build environment container sets up *binfmt_misc* support on your
+  **host** machine.
 
 Usage
 +++++
